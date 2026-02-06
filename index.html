@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aldrsze Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-display">
+            <div class="logo">&lt;Aldrsze/&gt;</div>
+            <nav class="navigation">
+                <a href="#" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+            </nav>
+            <div class="header-action">
+                <button class="contact-btn">Contact Me</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-display">
+                <div class="hero-content">
+                    <h1>Hi! I'm Aldrin!</h1>
+                    <p class="subtitle">Aspiring Software Developer, Web Developer & Cloud Engineer.</p>
+                    
+                    <div class="hero-btns">
+                        <button class="view-projects-btn">View Projects</button>
+                        <button class="like-btn">❤️</button>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img src="images/1x1_FORMAL.jpg" alt="profile">
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about-header">
+                    <h2>About Me</h2>
+                    <p class="about-description">
+                        Motivated and hardworking individual seeking an opportunity to gain practical experience
+                        and develop new skills. I am eager to learn, able to follow instructions, and committed
+                        to performing tasks responsibly and efficiently. My goal is to improve my communication,
+                        teamwork, and problem-solving skills while contributing positively to the company and 
+                        growing as a reliable and productive member of the team.
+                    </p>
+                </div>
+
+                <div class="cards-container">
+                    <div class="info-card">
+                        <div class="icon-box">
+                            <span>&lt;/&gt;</span>
+                        </div>
+                        <h3>Hobbies</h3>
+                        <p>Basketball and Coding</p>
+                    </div>
+
+                <div class="info-card">
+                    <div class="icon-box">
+                        <span>&lt;/&gt;</span>
+                    </div>
+                        <h3>Skills</h3>
+                        <p>Magmahal</p>
+                </div>    
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-tech-section">
+            <div class="container">
+                <h2 class="main-title">Skills & Technologies</h2>
+                
+                <div class="split-layout">
+                    <div class="column">
+                        <h3 class="column-title">Skills</h3>
+                        
+                        <div class="skill-item">
+                            <h4>###</h4>
+                            <p>###</p>
+                        </div>
+
+                    </div>
+
+                    <div class="column">
+                        <h3 class="column-title">Tech Stack</h3>
+                        
+                        <div class="tech-tags">
+                            <div class="tag"><span class="check">✔</span> Tech Stack</div>
+                            <div class="tag"><span class="check">✔</span> Tech Stack</div>
+                            <div class="tag"><span class="check">✔</span> Tech Stack</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="awards-section" id="awards">
+            <div class="container"> <h2 class="main-title">Awards & Certificates</h2>
+                
+                <div class="award-list">
+                    <div class="award-item">
+                        <h3>With Honors, STEM-11</h3>
+                        <p>2024 — Mary The Queen College of Quezon City</p>
+                    </div>
+
+                    <div class="award-item">
+                        <h3>With High Honors, STEM-12</h3>
+                        <p>2025 — Mary The Queen College of Quezon City</p>
+                    </div>
+                </div>
+
+                <div class="certificates-list" id="cert-slider">
+                    <div class="cert-card">
+                        <img src="/images/cert_java.png" alt="Introduction to Java">
+                    </div>
+                    <div class="cert-card">
+                        <img src="/images/cert_python.png" alt="Introduction to Python">
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="scroll-btn" onclick="scrollCert(-1)">❮ Prev</button>
+                    <button class="scroll-btn" onclick="scrollCert(1)">Next ❯</button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+
+    <script>
+        function scrollCert(direction) {
+            const slider = document.getElementById('cert-slider');
+            const scrollAmount = slider.offsetWidth; 
+            slider.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    </body>
+</html>
