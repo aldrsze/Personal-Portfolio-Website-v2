@@ -48,10 +48,26 @@ window.addEventListener('resize', function() {
 // Certificate Carousel
 function scrollCert(direction) {
     const slider = document.getElementById('cert-slider');
-    slider.scrollBy({
-        left: direction * slider.offsetWidth,
-        behavior: 'smooth'
-    });
+    const cardWidth = slider.querySelector('.cert-card').offsetWidth;
+    const gap = 30;
+    const isMobile = window.innerWidth <= 768;
+    const scrollAmount = isMobile ? (cardWidth + gap) : (cardWidth + gap) * 2; // 1 image on mobile, 2 on desktop
+    
+    if (direction === 1) {
+        // Going right
+        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    } else {
+        // Going left
+        if (slider.scrollLeft <= 10) {
+            slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+    }
 }
 
 const observerOptions = {
