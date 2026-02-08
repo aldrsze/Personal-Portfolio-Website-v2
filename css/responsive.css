@@ -122,16 +122,6 @@
         width: 300px;
     }
 
-    .split-layout {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-    }
-
-    .column-title {
-        text-align: center;
-    }
-
     .award-item {
         text-align: center;
     }
@@ -168,5 +158,14 @@
     .about-header h2,
     .main-title {
         font-size: 2rem;
+    }
+
+    .split-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .column-title {
+        text-align: center;
     }
 }

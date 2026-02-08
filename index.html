@@ -10,42 +10,47 @@
 <body>
 
     <header class="main-header">
-        <div class="container header-display">
-            <div class="logo">&lt;Aldrsze/&gt;</div>
-            <nav class="navigation">
-                <button class="nav-close" aria-label="Close menu">&times;</button>
-                <a href="#" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#">Projects</a>
-                <button class="contact-btn mobile-contact">Contact Me</button>
-            </nav>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="header-action">
-                <button class="contact-btn">Contact Me</button>
+        <div class="container">
+            <div class="header-display">
+                <div class="logo">&lt;Aldrsze/&gt;</div>
+                <nav class="navigation">
+                    <button class="nav-close" aria-label="Close menu">&times;</button>
+                    <a href="#home" > Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <button class="contact-btn mobile-contact">Contact Me</button>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="header-action">
+                    <button class="contact-btn">Contact Me</button>
+                </div>
             </div>
         </div>
     </header>
     <div class="menu-overlay"></div>
 
     <main>
-        <section class="hero-section">
-            <div class="container hero-display">
-                <div class="hero-content">
-                    <h1>Hi! I'm Aldrin!</h1>
-                    <p class="subtitle">Aspiring Software Developer, Web Developer & Cloud Engineer.</p>
-                    
-                    <div class="hero-btns">
-                        <button class="view-projects-btn">View Projects</button>
-                        <button class="like-btn">❤️</button>
+        <section class="hero-section" id="home">
+            <div class="container">
+                <div class="hero-display">
+                    <div class="hero-content">
+                        <h1>Hi! I'm Aldrin!</h1>
+                        <p class="subtitle">Aspiring Software Developer, Web Developer & Cloud Engineer.</p>
+                        
+                        <div class="hero-btns">
+                            <button class="view-projects-btn">View Projects</button>
+                            <button class="like-btn">❤️</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="hero-image">
-                    <img src="images/1x1_FORMAL.jpg" alt="profile">
+                    <div class="hero-image">
+                        <img src="images/Formal.jpg" alt="profile">
+                    </div>
                 </div>
             </div>
         </section>
@@ -83,7 +88,7 @@
             </div>
         </section>
 
-        <section class="skills-tech-section">
+        <section class="skills-tech-section" id="skills">
             <div class="container">
                 <h2 class="main-title">Skills & Technologies</h2>
                 
@@ -108,11 +113,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="awards-section" id="awards">
-            <div class="container"> <h2 class="main-title">Awards & Certificates</h2>
+                <h2 class="main-title" style="margin-top: 80px;">Awards & Certificates</h2>
                 
                 <div class="award-list">
                     <div class="award-item">
@@ -147,64 +149,7 @@
 
     </main>
 
-
-    <script>
-        // Mobile Menu
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navigation = document.querySelector('.navigation');
-        const menuOverlay = document.querySelector('.menu-overlay');
-        const navClose = document.querySelector('.nav-close');
-        const navLinks = document.querySelectorAll('.navigation a');
-        const mobileContactBtn = document.querySelector('.mobile-contact');
-
-        function openMenu() {
-            navigation.classList.add('active');
-            menuOverlay.classList.add('active');
-            mobileMenuBtn.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMenu() {
-            navigation.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Toggle menu
-        mobileMenuBtn.addEventListener('click', function() {
-            if (navigation.classList.contains('active')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
-
-        // Close menu events
-        menuOverlay.addEventListener('click', closeMenu);
-        navClose.addEventListener('click', closeMenu);
-        mobileContactBtn.addEventListener('click', closeMenu);
-        
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close menu on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMenu();
-            }
-        });
-
-        // Certificate Carousel
-        function scrollCert(direction) {
-            const slider = document.getElementById('cert-slider');
-            slider.scrollBy({
-                left: direction * slider.offsetWidth,
-                behavior: 'smooth'
-            });
-        }
-    </script>
+        <script src="js/main.js"></script>
 
     </body>
 </html>
