@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldrsze Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -12,15 +13,23 @@
         <div class="container header-display">
             <div class="logo">&lt;Aldrsze/&gt;</div>
             <nav class="navigation">
+                <button class="nav-close" aria-label="Close menu">&times;</button>
                 <a href="#" class="active">Home</a>
-                <a href="#">About</a>
+                <a href="#about">About</a>
                 <a href="#">Projects</a>
+                <button class="contact-btn mobile-contact">Contact Me</button>
             </nav>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="header-action">
                 <button class="contact-btn">Contact Me</button>
             </div>
         </div>
     </header>
+    <div class="menu-overlay"></div>
 
     <main>
         <section class="hero-section">
@@ -140,11 +149,58 @@
 
 
     <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navigation = document.querySelector('.navigation');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const navClose = document.querySelector('.nav-close');
+        const navLinks = document.querySelectorAll('.navigation a');
+        const mobileContactBtn = document.querySelector('.mobile-contact');
+
+        function openMenu() {
+            navigation.classList.add('active');
+            menuOverlay.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            navigation.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Toggle menu
+        mobileMenuBtn.addEventListener('click', function() {
+            if (navigation.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close menu events
+        menuOverlay.addEventListener('click', closeMenu);
+        navClose.addEventListener('click', closeMenu);
+        mobileContactBtn.addEventListener('click', closeMenu);
+        
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+
+        // Certificate Carousel
         function scrollCert(direction) {
             const slider = document.getElementById('cert-slider');
-            const scrollAmount = slider.offsetWidth; 
             slider.scrollBy({
-                left: direction * scrollAmount,
+                left: direction * slider.offsetWidth,
                 behavior: 'smooth'
             });
         }
