@@ -64,11 +64,11 @@ section {
 }
 
 section.active-section {
-    display: block;
+    display: block !important;
 }
 
 section.hero-section.active-section {
-    display: flex;
+    display: flex !important;
 }
 
 /* This creates the centered lane for consistent alignment */
@@ -243,7 +243,6 @@ section.hero-section.active-section {
 .hero-section {
     padding: 80px 0;
     min-height: 80vh;
-    display: flex;
     align-items: center;
 }
 
@@ -397,83 +396,120 @@ section.hero-section.active-section {
     text-align: center;
     font-size: 2.5rem;
     color: var(--primary-dark);
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
-.split-layout {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 60px;
-    justify-content: space-between;
-    align-items: flex-start;
+.tech-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* Tech Stack Scrolling Animation */
+.tech-scroll-container {
     width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    margin-bottom: 60px;
 }
 
-.column {
-    flex: 1 1 0;
+.tech-scroll {
+    display: flex;
+    gap: 80px;
+    animation: scroll 20s linear infinite;
+    width: fit-content;
+}
+
+.tech-scroll:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.tech-item {
     display: flex;
     flex-direction: column;
-    min-width: 0;
-    max-width: 50%;
-}
-
-.column-title {
-    font-size: 1.5rem;
-    color: var(--primary-dark);
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--primary-dark);
-    display: block;
-    text-align: left;
-}
-
-.skill-item {
-    background-color: var(--bg-tertiary);
-    padding: 20px 25px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border-left: 4px solid var(--primary-dark);
-    transition: transform 0.2s;
-}
-
-.skill-item h4 {
-    color: var(--primary-dark);
-    margin-bottom: 5px;
-}
-
-.skill-item p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.tag {
-    display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    border: 1.5px solid var(--primary-dark);
-    border-radius: 8px;
-    font-weight: 600;
-    color: var(--primary-dark);
-    font-size: 0.9rem;
+    gap: 15px;
+    min-width: 120px;
 }
 
-.check {
-    background-color: var(--primary-dark);
-    color: var(--btn-text);
-    font-size: 0.7rem;
-    width: 18px;
-    height: 18px;
+.tech-icon {
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    font-size: 3rem;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.tech-icon:hover {
+    transform: translateY(-10px);
+}
+
+.tech-item span {
+    font-size: 0.95rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+/* Tech Icon Colors */
+.tech-icon.vscode {
+    background: linear-gradient(135deg, #007acc, #0098ff);
+    color: white;
+}
+
+.tech-icon.java {
+    background: linear-gradient(135deg, #f89820, #e76f00);
+    color: white;
+}
+
+.tech-icon.html {
+    background: linear-gradient(135deg, #e34c26, #f06529);
+    color: white;
+}
+
+.tech-icon.css {
+    background: linear-gradient(135deg, #264de4, #2965f1);
+    color: white;
+}
+
+.tech-icon.js {
+    background: linear-gradient(135deg, #f0db4f, #f7df1e);
+    color: #323330;
+}
+
+.tech-icon.python {
+    background: linear-gradient(135deg, #306998, #ffd43b);
+    color: white;
+}
+
+.tech-icon.sql {
+    background: linear-gradient(135deg, #00758f, #00a0d2);
+    color: white;
+}
+
+.tech-icon.git {
+    background: linear-gradient(135deg, #f05032, #f34f29);
+    color: white;
+}
+
+.tech-icon.github {
+    background: linear-gradient(135deg, #24292e, #444d56);
+    color: white;
 }
 
 /* --- AWARDS & CERTI --- */
