@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldrsze Portfolio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css')}}">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
 </head>
 <body>
 
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="hero-image">
-                        <img src="{{ url_for('static', filename='images/Formal.jpg') }}" alt="profile">
+                        <img src="/static/images/Formal.jpg" alt="profile">
                     </div>
                 </div>
             </div>
@@ -132,27 +132,34 @@
                     <button class="scroll-btn scroll-btn-left" onclick="scrollCert(-1)">❮</button>
                     <div class="certificates-list" id="cert-slider">
                         <div class="cert-card">
-                            <img src="{{ url_for('static', filename='images/cert_java.png') }}" alt="Introduction to Java">
+                            <img src="/static/images/cert_java.png" alt="Introduction to Java">
                         </div>
                         <div class="cert-card">
-                            <img src="{{ url_for('static', filename='images/cert_python.png') }}" alt="Introduction to Python">
+                            <img src="/static/images/cert_python.png" alt="Introduction to Python">
                         </div>
                         <div class="cert-card">
-                            <img src="{{ url_for('static', filename='images/SmartStock.png') }}" alt="SmartStock Certificate">
+                            <img src="/static/images/SmartStock.png" alt="SmartStock Certificate">
                         </div>
                         <div class="cert-card">
-                            <img src="{{ url_for('static', filename='images/Formal.jpg') }}" alt="Formal Photo">
+                            <img src="/static/images/Formal.jpg" alt="Formal Photo">
                         </div>
                         <div class="cert-card">
-                            <img src="{{ url_for('static', filename='images/1x1_FORMAL.jpg') }}" alt="1x1 Formal Photo">
+                            <img src="/static/images/1x1_FORMAL.jpg" alt="1x1 Formal Photo">
                         </div>
                     </div>
                     <button class="scroll-btn scroll-btn-right" onclick="scrollCert(1)">❯</button>
                 </div>
             </div>
         </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="main-title">Projects</h2>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-muted);">Coming soon...</p>
+            </div>
+        </section>
     </main>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>

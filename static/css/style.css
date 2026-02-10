@@ -36,6 +36,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    overflow: hidden;
 }
 
 img {
@@ -46,6 +47,28 @@ img {
 body {
     background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
     min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Section Management */
+main {
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+section {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+}
+
+section.active-section {
+    display: block;
+}
+
+section.hero-section.active-section {
+    display: flex;
 }
 
 /* This creates the centered lane for consistent alignment */
@@ -87,7 +110,7 @@ body {
     width: 100%;
     padding: 20px 0;
     border-bottom: 3px solid #000000;
-    position: sticky;
+    position: fixed;
     top: 0;
     background-color: var(--bg-primary);
     z-index: 1000;
@@ -543,4 +566,13 @@ body {
 
 .scroll-btn:hover {
     transform: scale(1.2);
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 80px 0;
+    background-color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

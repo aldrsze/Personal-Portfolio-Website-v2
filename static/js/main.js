@@ -35,13 +35,64 @@ navClose.addEventListener('click', closeMenu);
 mobileContactBtn.addEventListener('click', closeMenu);
 
 navLinks.forEach(function(link) {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        showSection(targetId);
+        closeMenu();
+    });
 });
 
 // Close menu on window resize
 window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
         closeMenu();
+    }
+});
+
+// Section Switching
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active-section');
+    });
+    
+    // Show target section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active-section');
+    }
+    
+    // Update active navigation link
+    document.querySelectorAll('.navigation a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + sectionId) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Initialize - show home section by default
+document.addEventListener('DOMContentLoaded', function() {
+    showSection('home');
+    
+    // Handle logo click
+    const logo = document.querySelector('.logo a');
+    if (logo) {
+        logo.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSection('home');
+        });
+    }
+    
+    // Handle "View Projects" button
+    const viewProjectsBtn = document.querySelector('.view-projects-btn');
+    if (viewProjectsBtn) {
+        viewProjectsBtn.addEventListener('click', function() {
+            // Navigate to projects if exists, otherwise go to skills
+            const projectsSection = document.getElementById('projects');
+            showSection(projectsSection ? 'projects' : 'skills');
+        });
     }
 });
 
@@ -69,43 +120,3 @@ function scrollCert(direction) {
         }
     }
 }
-
-const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -70% 0px', 
-    threshold: 0
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-        const navLink = document.querySelector(`.navigation a[href="#${id}"]`);
-        
-        if (entry.isIntersecting) {
-            // Remove active from all links first
-            document.querySelectorAll('.navigation a').forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active to the current link
-            if (navLink) navLink.classList.add('active');
-        }
-    });
-}, observerOptions);
-
-// Track every section that has an ID
-document.querySelectorAll('section[id]').forEach(section => {
-    observer.observe(section);
-});
-
-// Extra check for the very top of the page
-window.addEventListener('scroll', () => {
-    if (window.scrollY < 50) {
-        document.querySelectorAll('.navigation a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#home') {
-                link.classList.add('active');
-            }
-        });
-    }
-});
