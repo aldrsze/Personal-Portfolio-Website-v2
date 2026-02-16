@@ -454,6 +454,14 @@ section.hero-section.active-section {
     font-weight: bold;
     border-radius: 15px;
     transition: transform 0.3s ease;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.tech-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .tech-icon:hover {
@@ -468,48 +476,39 @@ section.hero-section.active-section {
 
 /* Tech Icon Colors */
 .tech-icon.vscode {
-    background: linear-gradient(135deg, #007acc, #0098ff);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.java {
-    background: linear-gradient(135deg, #f89820, #e76f00);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.html {
-    background: linear-gradient(135deg, #e34c26, #f06529);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.css {
-    background: linear-gradient(135deg, #264de4, #2965f1);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.js {
-    background: linear-gradient(135deg, #f0db4f, #f7df1e);
-    color: #323330;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.python {
-    background: linear-gradient(135deg, #306998, #ffd43b);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.sql {
-    background: linear-gradient(135deg, #00758f, #00a0d2);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.git {
-    background: linear-gradient(135deg, #f05032, #f34f29);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 .tech-icon.github {
-    background: linear-gradient(135deg, #24292e, #444d56);
-    color: white;
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
 }
 
 /* --- AWARDS & CERTI --- */
