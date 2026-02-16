@@ -642,14 +642,38 @@ section.hero-section.active-section {
     max-width: 400px;
 }
 
+.login-logo-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .login-box .logo {
     font-weight: 700;
+    font-size: 32px;
+    color: var(--accent-color);
 }
 
 .login-box h2 {
     text-align: center;
     margin-bottom: 8px;
     color: var(--primary-dark);
+}
+
+.login-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.login-back-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 14px;
 }
 
 .login-box p {

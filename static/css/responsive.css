@@ -213,3 +213,97 @@
         padding: 8px;
     }
 }
+
+/* ==================== Login Page Responsive ==================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .login-box {
+        max-width: 450px;
+        padding: 40px;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-box {
+        padding: 35px 30px;
+        max-width: 100%;
+    }
+
+    .login-box .logo {
+        font-size: 28px;
+    }
+
+    .login-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .login-box p {
+        font-size: 0.9rem;
+    }
+
+    .login-box input {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .login-box button {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .flash-message {
+        padding: 14px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-box {
+        padding: 30px 25px;
+    }
+
+    .login-box .logo {
+        font-size: 24px;
+    }
+
+    .login-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .login-box p {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .login-box input {
+        padding: 11px;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .login-box button {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    .flash-message {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+    }
+
+    .flash-message i {
+        font-size: 16px;
+    }
+}

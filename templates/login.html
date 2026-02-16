@@ -10,11 +10,11 @@
 <body>
     <div class="login-container">
         <div class="login-box">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div class="logo" style="font-size: 32px; color: var(--accent-color);">&lt;Admin/&gt;</div>
+            <div class="login-logo-wrapper">
+                <div class="logo">&lt;Admin/&gt;</div>
             </div>
             <h2>Welcome Back</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 24px;">Sign in to manage your portfolio</p>
+            <p class="login-subtitle">Sign in to manage your portfolio</p>
             
             {% if error %}
             <div class="flash-message error">
@@ -29,8 +29,8 @@
                 <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
             </form>
             
-            <div style="text-align: center; margin-top: 24px;">
-                <a href="/" style="color: var(--accent-color); text-decoration: none; font-size: 14px;">
+            <div class="login-footer">
+                <a href="/" class="login-back-link">
                     <i class="fas fa-arrow-left"></i> Back to Portfolio
                 </a>
             </div>
