@@ -4,23 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);">
-        <div style="text-align: center; background: var(--bg-primary); padding: 60px; border-radius: 12px; box-shadow: 0 10px 30px var(--shadow-dark); max-width: 600px;">
-            <h1 style="font-size: 3rem; color: var(--primary-dark); margin-bottom: 20px;">TEST LANG</h1>
-            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">Test page for admin/dashboard page</p>
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <a href="/" style="padding: 12px 24px; background: var(--accent-color); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;">
-                    Go to Home
-                </a>
-                <a href="/logout" style="padding: 12px 24px; background: var(--btn-primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s;">
-                    Logout
-                </a>
-            </div>
-        </div>
-    </div>
+    <header>
+	<h1>Admin Page</h1>
+	<a href="/">View Site</a> | <a href="/logout">Logout</a>
+    </header>
+
+    <main>
+	<!-- HEADER / LOGO -->
+	<section>
+	    <h2> Header Logo </h2>
+	    <form method="POST" action="/admin/update-header">
+		<label>Logo Text: <input type="text" name="logo_text" value="{{ header.logo_text or '' }}" placeholder="<Aldrsze/>"></label><br>
+		
+		<button type="submit"> Update Logo</button>
+	    </form>
+	</section>
+
+	<!-- HOME / HERO SECTION -->
+	<section>
+	    <h2>Home Section (hero)</h2>
+	    <form method="POST" action="/admin/update-home" enctype="multipart/form-data">
+		<label> Greeting: <input type="text" name="greeting" value="{{ home.greeting or '' }}" placeholder="Hi, I'm Aldrin!"></label><br>
+		<label> Subtitle: <textarea name="subtitle" rows="2" placeholder="Aspiring Software Developer..."> {{ home.subtitle or '' }}</textarea></label><br>
+		<label> Profile Image: <input type="file" name="profile_image">{% if home.profile_image %} <small> (Current: {{ home.profile_image }})</small>{% endif %}</label><br>
+		<button type="submit"> Update Home </button>
+	    </form>
+	</section>
+
+    </main>
+
     <script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>

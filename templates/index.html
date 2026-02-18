@@ -12,7 +12,7 @@
     <header class="main-header">
         <div class="container">
             <div class="header-display">
-                <div class="logo"><a href="#home" >&lt;Aldrsze/&gt;</a></div>
+		<div class="logo"><a href="#home" > {{ header.logo_text or '&lt;Aldrsze/&gt;' }}</a></div>
                 <nav class="navigation">
                     <button class="nav-close" aria-label="Close menu">&times;</button>
                     <a href="#home" > Home</a>
@@ -39,8 +39,8 @@
             <div class="container">
                 <div class="hero-display">
                     <div class="hero-content">
-                        <h1>Hi, I'm Aldrin!</h1>
-                        <p class="subtitle">Aspiring Software Developer, Web Developer & Cloud Engineer.</p>
+			<h1>{{ home.greeting or "Hi, I'm Aldrin!" }}</h1>
+			<p class="subtitle"> {{ home.subtitle or 'Aspiring Software Developer, Web Developer & Cloud Engineer.' }}</p>
                         
                         <div class="hero-btns">
                             <button class="view-projects-btn">View Projects</button>
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="hero-image">
-                        <img src="/static/images/Formal.jpg" alt="profile">
+			<img src="{{ home.profile_image or '/static/images/Formal.jpg' }}" alt="profile">
                     </div>
                 </div>
             </div>
@@ -58,13 +58,13 @@
         <section class="about-section" id="about">
             <div class="container">
                 <div class="about-header">
-                    <h2>About Me</h2>
+		    <h2>{{ about.title or 'About Me' }}</h2>
                     <p class="about-description">
-                        Motivated and hardworking individual seeking an opportunity to gain practical experience
+		    {{ about.description or 'Motivated and hardworking individual seeking an opportunity to gain practical experience
                         and develop new skills. I am eager to learn, able to follow instructions, and committed
                         to performing tasks responsibly and efficiently. My goal is to improve my communication,
                         teamwork, and problem-solving skills while contributing positively to the company and 
-                        growing as a reliable and productive member of the team.
+			growing as a reliable and productive member of the team.' }}
                     </p>
                 </div>
 
@@ -74,7 +74,7 @@
                             <span>&lt;/&gt;</span>
                         </div>
                         <h3>Hobbies</h3>
-                        <p>Basketball and Coding</p>
+			<p>{{ about.hobbies or 'Basketball and Coding' }}</p>
                     </div>
 
                 <div class="info-card">
@@ -82,7 +82,7 @@
                         <span>&lt;/&gt;</span>
                     </div>
                         <h3>Skills</h3>
-                        <p>Magmahal</p>
+			<p>{{ about.skills or 'Magmahal' }}</p>
                 </div>    
                 </div>
             </div>
@@ -90,154 +90,55 @@
 
         <section class="skills-tech-section" id="skills">
             <div class="container">
-                <h2 class="main-title">Skills & Technologies</h2>
+		<h2 class="main-title">{{ skills.section_title or 'Skills & Technologies' }}</h2>
                 
                 <p class="tech-description">
-                    I work with a variety of technologies including Java, Python, and web development tools.
+		{{ skills.description or 'I work with a variety of technologies including Java, Python, and web development tools.
                     From building dynamic websites with HTML, CSS, and JavaScript to database management with SQL,
-                    I use VSCode as my primary editor and Git/GitHub for version control and collaboration.
+		    I use VSCode as my primary editor and Git/GitHub for version control and collaboration.' }}
                 </p>
 
                 <div class="tech-scroll-container">
                     <div class="tech-scroll">
+			{% for item in tech_items %}
                         <div class="tech-item">
                             <div class="tech-icon vscode">
-                                <img src="/static/images/techstack/vscode.png" alt="VS Code">
+				<img src="{{ item.icon }}" alt="{{ item.name }}">
                             </div>
-                            <span>VS Code</span>
+			    <span>{{ item.name }}</span>
                         </div>
+			{% endfor %}
+
+			{% for item in tech_items %}
                         <div class="tech-item">
-                            <div class="tech-icon java">
-                                <img src="/static/images/techstack/java.png" alt="Java">
+                            <div class="tech-icon">
+				<img src="{{ item.icon }}" alt="{{ item.name }}">
                             </div>
-                            <span>Java</span>
+			    <span>{{ item.name }}</span>
                         </div>
-                        <div class="tech-item">
-                            <div class="tech-icon html">
-                                <img src="/static/images/techstack/html.png" alt="HTML">
-                            </div>
-                            <span>HTML</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon css">
-                                <img src="/static/images/techstack/css.png" alt="CSS">
-                            </div>
-                            <span>CSS</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon js">
-                                <img src="/static/images/techstack/js.png" alt="JavaScript">
-                            </div>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon python">
-                                <img src="/static/images/techstack/python.png" alt="Python">
-                            </div>
-                            <span>Python</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon sql">
-                                <img src="/static/images/techstack/sql.jpeg" alt="SQL">
-                            </div>
-                            <span>SQL</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon git">
-                                <img src="/static/images/techstack/git.png" alt="Git">
-                            </div>
-                            <span>Git</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon github">
-                                <img src="/static/images/techstack/github.png" alt="GitHub">
-                            </div>
-                            <span>GitHub</span>
-                        </div>
-                        <!-- Duplicate for seamless loop -->
-                        <div class="tech-item">
-                            <div class="tech-icon vscode">
-                                <img src="/static/images/techstack/vscode.png" alt="VS Code">
-                            </div>
-                            <span>VS Code</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon java">
-                                <img src="/static/images/techstack/java.png" alt="Java">
-                            </div>
-                            <span>Java</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon html">
-                                <img src="/static/images/techstack/html.png" alt="HTML">
-                            </div>
-                            <span>HTML</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon css">
-                                <img src="/static/images/techstack/css.png" alt="CSS">
-                            </div>
-                            <span>CSS</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon js">
-                                <img src="/static/images/techstack/js.png" alt="JavaScript">
-                            </div>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon python">
-                                <img src="/static/images/techstack/python.png" alt="Python">
-                            </div>
-                            <span>Python</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon sql">
-                                <img src="/static/images/techstack/sql.jpeg" alt="SQL">
-                            </div>
-                            <span>SQL</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon git">
-                                <img src="/static/images/techstack/git.png" alt="Git">
-                            </div>
-                            <span>Git</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon github">
-                                <img src="/static/images/techstack/github.png" alt="GitHub">
-                            </div>
-                            <span>GitHub</span>
-                        </div>
+			{% endfor %}
                     </div>
                 </div>
 
                 <h2 class="main-title" style="margin-top: 80px;">Awards & Certificates</h2>
                 
                 <div class="award-list">
+		    {% for award in awards %}
                     <div class="award-item">
-                        <h3>With Honors, STEM-11</h3>
-                        <p>2024 — Mary The Queen College of Quezon City</p>
+			<h3>{{ award.title }}</h3>
+			<p>{{ award.details }}</p>
                     </div>
-
-                    <div class="award-item">
-                        <h3>With High Honors, STEM-12</h3>
-                        <p>2025 — Mary The Queen College of Quezon City</p>
-                    </div>
+		    {% endfor %}
                 </div>
 
                 <div class="carousel-wrapper">
                     <button class="scroll-btn scroll-btn-left" onclick="scrollCert(-1)">❮</button>
                     <div class="certificates-list" id="cert-slider">
+			{% for cert in certificates %}
                         <div class="cert-card">
-                            <img src="/static/images/cert_java.png" alt="Introduction to Java">
+			    <img src="{{ cert.image }}" alt="{{ cert.alt_text }}">
                         </div>
-                        <div class="cert-card">
-                            <img src="/static/images/cert_python.png" alt="Introduction to Python">
-                        </div>
-                        <div class="cert-card">
-                            <img src="/static/images/Coding-foundations.png" alt="SmartStock Certificate">
-                        </div>
+			{% endfor %}
                     </div>
                     <button class="scroll-btn scroll-btn-right" onclick="scrollCert(1)">❯</button>
                 </div>
@@ -246,8 +147,8 @@
 
         <section class="projects-section" id="projects">
             <div class="container">
-                <h2 class="main-title">Projects</h2>
-                <p style="text-align: center; margin-top: 20px; color: var(--text-muted);">Coming soon...</p>
+		<h2 class="main-title">{{ projects.section_title or 'Projects' }}</h2>
+		<p style="text-align: center; margin-top: 20px; color: var(--text-muted);">{{ projects.message or 'Coming soon...' }}</p>
             </div>
         </section>
     </main>
