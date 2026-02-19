@@ -121,3 +121,44 @@ function scrollCert(direction) {
     }
 }
 
+// Contact Sidebar 
+function toggleContact() {
+    const sidebar = document.getElementById('contactSidebar');
+    sidebar.classList.toggle('active');
+}
+
+// Event listener for the contact button
+document.addEventListener('DOMContentLoaded', function() {
+    const contactButtons = document.querySelectorAll('.contact-btn');
+    contactButtons.forEach(function(btn) {
+	btn.addEventListener('click', toggleContact);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

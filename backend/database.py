@@ -55,6 +55,10 @@ def init_db():
     # projects section table
     c.execute('''CREATE TABLE IF NOT EXISTS projects_content (
         id INTEGER PRIMARY KEY, section_title TEXT, message TEXT)''')
+
+    # contact contents table
+    c.execute('''CREATE TABLE IF NOT EXISTS contact_content (
+    id INTEGER PRIMARY KEY, email TEXT, phone TEXT, facebook TEXT, github TEXT, linkedin TEXT)''')
     
     # insert the default admin user
     c.execute("SELECT COUNT(*) FROM users")
@@ -251,7 +255,30 @@ def update_projects_content(data):
     conn.close()
     trigger_reload()
 
+# contact
+def get_contact_content():
+    conn = db()
+    r = conn.execute("SELECT * FROM contact_content LIMIT 1").fetchone()
+    conn.close()
+    return dict(r) if r else {}
 
+def update_contact_content(data):
+    conn = db()
+    existing = conn.execute("SELECT id FROM contact_content LIMIT 1").fetchone()
+    if existing:
+        conn.execute(
+                "UPDATE contact_content SET email=?, phone=?, facebook=?, github=?, linkedin=? WHERE id=?",
+                (data['email'], data['phone'], data['facebook'], data['github'], data['linkedin'], existing['id'])
+        )
+    else:
+        conn.execute(
+            "INSERT INTO contact_content (email, phone, facebook, github, linkedin) VALUES (?, ?, ?, ?, ?)",
+            (data['email'], data['phone'], data['facebook'], data['github'], data['linkedin'])
+        )
+    conn.commit()
+    conn.close()
+    trigger_reload()
+            
 
 
 

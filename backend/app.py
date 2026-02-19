@@ -29,7 +29,8 @@ def index():
                            tech_items=get_all_tech_items(),
                            awards=get_all_awards(),
                            certificates=get_all_certificates(),
-                           projects=get_projects_content()
+                           projects=get_projects_content(),
+                           contact=get_contact_content()
                     )
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -68,7 +69,8 @@ def admin():
                            tech_items=get_all_tech_items(),
                            awards=get_all_awards(),
                            certificates=get_all_certificates(),
-                           projects=get_projects_content()
+                           projects=get_projects_content(),
+                           contact=get_contact_content()
     )
 
 @app.route('/logout')
@@ -186,6 +188,18 @@ def update_projects_route():
         'message' : request.form.get('message')
     }
     update_projects_content(data)
+    return redirect(url_for('admin'))
+
+@app.route('/admin/update-contact', methods=['POST'])
+def update_contact_route():
+    data = {
+            'email': request.form.get('email'),
+            'phone': request.form.get('phone'),
+            'facebook': request.form.get('facebook'),
+            'github': request.form.get('github'),
+            'linkedin': request.form.get('linkedin'),
+    }
+    update_contact_content(data)
     return redirect(url_for('admin'))
 
 if __name__ == "__main__":

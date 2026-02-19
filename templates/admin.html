@@ -164,12 +164,23 @@
 	    <h2>Projects Section</h2>
 	    <form method="POST" action="/admin/update-projects">
 		<label>Section Title: <input type="text" name="section_title" value="{{ projects.section_title or '' }}"></label><br>
-		<label>Message: <input type="text" name="message" value"{{ projects.message or ''}}"></label><br>
+		<label>Message: <input type="text" name="message" value="{{ projects.message or ''}}"></label><br>
 		<button type="submit">Update Projects Sections</button>
 	    </form>
 	</section>
 
-
+	<!-- CONTACT SIDEBAR SECTION -->
+	<section>
+	    <h2>Contact Section</h2>
+	    <form method="POST" action="/admin/update-contact">
+		<label> Email: <input type="text" name="email" value="{{ contact.email or '' }}"</label><br>
+		<label> Phone: <input type="text" name="phone" value="{{ contact.phone or '' }}"</label><br>
+		<label> Facebook: <input type="text" name="facebook" value="{{ contact.facebook or '' }}"</label><br>
+		<label> Github: <input type="text" name="github" value="{{ contact.github or '' }}"</label><br>
+		<label> LinkedIn: <input type="text" name="linkedin" value="{{ contact.linkedin or '' }}"</label><br>
+		<button type="submit">Update Contacts</button>
+	    </form>
+	</section>
 
 
 

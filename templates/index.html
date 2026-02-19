@@ -6,6 +6,7 @@
     <title>Aldrsze Portfolio</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -152,6 +153,60 @@
             </div>
         </section>
     </main>
+
+    <!-- CONTACT SIDEBAR -->
+    <div id="contactSidebar" class="contact-sidebar">
+	<div class="contact-content">
+	    <button class="close-btn" onclick="toggleContact()">&times;</button>
+	    <h3>Get in Touch</h3>
+	    <div class="contact-item">
+		<i class="fas fa-envelope"></i>
+		<span>{{ contact.email }}</span> 
+	    </div>
+	    <div class="contact-item">
+		<i class="fas fa-phone"></i>
+		<span>{{ contact.phone }}</span>
+	    </div>
+	    <div class="contact-item">
+		<i class="fab fa-facebook"></i>
+		<a href="{{ contact.facebook }}" target="_blank">Facebook</a>
+	    </div>
+	    <div class="contact-item">
+		<i class="fab fa-github"></i>
+		<a href="{{ contact.github }}" target="_blank">Github</a>
+	    </div>
+	    <div class="contact-item">
+		<i class="fab fa-linkedin"></i>
+		<a href="{{ contact.linkedin }}" target="_blank">linkedIn</a>
+	    </div>
+	</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script src="/static/js/main.js"></script>
 </body>
