@@ -16,7 +16,7 @@
 	<section>
 	    <h2> Header Logo </h2>
 	    <form method="POST" action="/admin/update-header">
-		<label>Logo Text: <input type="text" name="logo_text" value="{{ header.logo_text or '' }}" placeholder="<Aldrsze/>"></label><br>
+		<label>Logo Text: <input type="text" name="logo_text" value="{{ header.logo_text or '' }}"></label><br>
 		
 		<button type="submit"> Update Logo</button>
 	    </form>
@@ -26,12 +26,174 @@
 	<section>
 	    <h2>Home Section (hero)</h2>
 	    <form method="POST" action="/admin/update-home" enctype="multipart/form-data">
-		<label> Greeting: <input type="text" name="greeting" value="{{ home.greeting or '' }}" placeholder="Hi, I'm Aldrin!"></label><br>
-		<label> Subtitle: <textarea name="subtitle" rows="2" placeholder="Aspiring Software Developer..."> {{ home.subtitle or '' }}</textarea></label><br>
+		<label> Greeting: <input type="text" name="greeting" value="{{ home.greeting or '' }}"></label><br>
+		<label> Subtitle: <textarea name="subtitle" rows="2"> {{ home.subtitle or '' }}</textarea></label><br>
 		<label> Profile Image: <input type="file" name="profile_image">{% if home.profile_image %} <small> (Current: {{ home.profile_image }})</small>{% endif %}</label><br>
 		<button type="submit"> Update Home </button>
 	    </form>
 	</section>
+	
+	<!-- ABOUT SECTION -->
+	<section>
+	    <h2>About Section</h2>
+	    <form method="POST" action="/admin/update-about">
+		<label>Title: <input type="text" name="title" value="{{ about.title or '' }}"></label><br>
+		<label> Description: <textarea name="description" rows="5">{{ about.description or '' }}</textarea></label><br>
+		<label>Hobbies: <input type="text" name="hobbies" value="{{ about.hobbies or ''}}"></label><br>
+		<label>Skills: <input type="text" name="skills" value="{{ about.skills or '' }}"></label><br>
+		<button type="submit">Update About</button>
+	    </form>
+	</section>
+
+	<!-- SKILLS SECTION -->
+	<section>
+	    <h2>Skills and Technologies Section</h2>
+	    <form method="POST" action="/admin/update-skills">
+		<label>Section Title: <input type="text" name="section_title" value="{{ skills.section_title or '' }}"></label><br>
+		<label>Description: <textarea name="description" rows="3">{{ skills.description or '' }}</textarea></label><br>
+		<button type="submit">Update Skills Section</button>
+	    </form>
+	</section>
+
+	<!-- TECHSTACK SECTION -->
+	<section>
+	    <h2>Tech Stack Images</h2>
+	    <form method="POST" action="/admin/add-tech-item" enctype="multipart/form-data">
+		<label>Tech Name: <input type="text" name="name" required></label><br>
+		<label>Icon Image: <input type="file" name="icon" required></label><br>
+		<label>Display Order: <input type="number" name="order_num" value="0"</label><br>
+		<button type="submit">Add Tech Items</button>
+	    </form>
+
+	    <h3>Current Tech Stack</h3>
+	    <table border="1">
+		<tr>
+		    <th>Name</th>
+		    <th>Icon</th>
+		    <th>Order</th>
+		    <th>Actions</th>
+		</tr>
+		{% if tech_items %}
+		    {% for item in tech_items %}
+		    <tr>
+			<td>{{ item.name }}</td>
+			<td>{% if item.icon %}<img src="{{ item.icon }}" width="30">{% endif %}</td>
+			<td>{{ item.order_num }}</td>
+			<td>
+			    <button onclick="if(confirm('Delete this tech item?')){fetch('/admin/delete-tech-item/{{ item.id }}',{method:'DELETE'}).then(r=>r.ok?location.reload():alert('Failed'))}">Delete</button>
+			</td>
+		    </tr>
+		    {% endfor %}
+		{% else %}
+		    <tr><td colspan="4">No tech items.</td></tr>
+		{% endif %}
+	    </table>
+	</section>
+
+	<!-- AWARDS SECTION -->
+	<section>
+	    <h2>Awards</h2>
+	    <form method="POST" action="/admin/add-award">
+		<label>Award Title: <input type="text" name="title" required></label><br>
+		<label>Details: <input type="text" name="details"></label><br>
+		<label>Display Order: <input type="number" name="order_num" value="0"></label><br>
+		<button type="submit">Add Award</button>
+	    </form>
+
+	    <h3>Current Awards</h3>
+	    <table border="1">
+		<tr>
+		    <th>Title</th>
+		    <th>Details</th>
+		    <th>Order</th>
+		    <th>Actions</th>
+		</tr>
+		{% if awards %}
+		    {% for award in awards %}
+		    <tr>
+			<td>{{ award.title }}</td>
+			<td>{{ award.details }}</td>
+			<td>{{ award.order_num }}</td>
+			<td>
+			    <button onclick="if(confirm('Delete this award?')){fetch('/admin/delete-award/{{award.id }}',{method:'DELETE'}).then(r=>r.ok ? location.reload():alert('Failed'))}">Delete</button>
+			</td>
+		    </tr>
+		    {% endfor %}
+		{% else %}
+		    <tr><td colspan="4">No awards found.</td></tr>
+		{% endif %}
+	    </table>
+	</section>
+
+	<section>
+	    <h2>Certificates</h2>
+	    <form method="POST" action="/admin/add-certificate" enctype="multipart/form-data">
+		<label>Certificate Image: <input type="file" name="cert_image" required></label><br>
+		<label>Alt Text: <input type="text" name="alt_text"></label><br>
+		<label>Display Order: <input type="number" name="order_num" value="0"></label><br>
+		<button type="submit">Add Certificate</button>
+	    </form>
+
+	    <h3>Current Certificates</h3>
+	    <table border="1">
+		<tr>
+		    <th>Image</th>
+		    <th>Alt Text</th>
+		    <th>Order</th>
+		    <th>Actions</th>
+		</tr>
+		{% if certificates %}
+		    {% for cert in certificates %}
+		    <tr>
+			<td>{% if cert.image %}<img src="{{ cert.image }}" width="100">{% endif %}</td>
+			<td>{{ cert.alt_text }}</td>
+			<td>{{ cert.order_num }}</td>
+			<td>
+			    <button onclick="if(confirm('Delete this certificate?')){fetch('/admin/delete-certificate/{{ cert.id }}',{method:'DELETE'}).then(r=>r.ok?location.reload():alert('Failed'))}">Delete</button>
+			</td>
+		    </tr>
+		    {% endfor %}
+		{% else %}
+		    <tr><td colspan="4">No certificates found</td></tr>
+		{% endif %}
+	    </table>
+	</section>
+
+	<!-- PROJECTS SECTION -->
+	<section>
+	    <h2>Projects Section</h2>
+	    <form method="POST" action="/admin/update-projects">
+		<label>Section Title: <input type="text" name="section_title" value="{{ projects.section_title or '' }}"></label><br>
+		<label>Message: <input type="text" name="message" value"{{ projects.message or ''}}"></label><br>
+		<button type="submit">Update Projects Sections</button>
+	    </form>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </main>
 

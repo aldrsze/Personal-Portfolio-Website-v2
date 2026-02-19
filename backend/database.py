@@ -138,9 +138,9 @@ def update_about_content(data):
     else:
         conn.execute("INSERT INTO about_content (title, description, hobbies, skills) VALUES (?, ?, ?, ?)",
                      (data['title'], data['description'], data['hobbies'], data['skills']))
-        conn.commit()
-        conn.close()
-        trigger_reload()
+    conn.commit()
+    conn.close()
+    trigger_reload()
 
 
 # skills
@@ -160,9 +160,9 @@ def update_skills_content(data):
     else:
         conn.execute("INSERT INTO skills_content (section_title, description) VALUES (?, ?)",
                      (data['section_title'], data['description']))
-        conn.commit()
-        conn.close()
-        trigger_reload()
+    conn.commit()
+    conn.close()
+    trigger_reload()
 
 
 # Tech Stacks
@@ -247,9 +247,9 @@ def update_projects_content(data):
     else:
         conn.execute("INSERT INTO projects_content (section_title, message) VALUES (?, ?)",
                      (data['section_title'], data['message']))
-        conn.commit()
-        conn.close()
-        trigger_reload()
+    conn.commit()
+    conn.close()
+    trigger_reload()
 
 
 
